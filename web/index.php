@@ -25,6 +25,6 @@ foreach (new DirectoryIterator( __DIR__ . '/../src/Controllers') as $dir_item) {
     });
 }
 
-$app->get('/mylink', "controller.mycontroller:indexAction");
+require_once __DIR__.'/../config/routes.php';
 
 $app->run();
