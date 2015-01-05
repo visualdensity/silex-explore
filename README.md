@@ -1,3 +1,3 @@
-# LK Marketing & Digital Department Portal
+# Exploring Silex
 
-Built for quick portal access to group staff.
+Nothing to see, really. Just playing around with Silex.
