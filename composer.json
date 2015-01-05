@@ -1,0 +1,12 @@
+{
+    "name": "lkg/lk-mdd-portal",
+    "license": "MIT",
+    "type": "project",
+    "description": "The LK Marketing and Digital Department Portal",
+    "autoload": {
+        "psr-4": { "": "src/" }
+    },
+    "require": {
+        "silex/silex": "1.2.*"
+    }
+}
