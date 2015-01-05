@@ -1,16 +1,30 @@
 <?php
 require_once __DIR__.'/../vendor/autoload.php';
 
-use Demo\Controller\MyController as MyController;
-
 $app = new Silex\Application();
 
 $app['debug'] = true;
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
-$app['my.controller'] = $app->share(function() use ($app) {
-        return new MyController();
-});
 
-$app->get('/mylink', "my.controller:indexAction");
+foreach (new DirectoryIterator( __DIR__ . '/../src/Controllers') as $dir_item) {
+    if($dir_item->isDot()) {
+        continue;
+    }
+    if( !preg_match('/php$/', $dir_item->getFilename()) ) {
+        continue;
+    }
+    if( !preg_match('/(.*)\.php$/', $dir_item->getFilename(), $match) ) {
+        throw new \Exception("Could not preg match the filename: " . $dir_item->getFilename());
+    }
+
+    $class   = 'Controllers\\' . $match[1];
+    $di_name = 'controller.' . strtolower($match[1]);
+
+    $app[$di_name] = $app->share(function() use ($app, $class) {
+        return new $class();
+    });
+}
+
+$app->get('/mylink', "controller.mycontroller:indexAction");
 
 $app->run();
