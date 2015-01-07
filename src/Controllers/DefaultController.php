@@ -1,15 +1,8 @@
 <?php
-namespace Controllers;
+$default = $app['controllers_factory'];
 
-use Symfony\Component\HttpFoundation\Response;
+$default->get('/', function() use ($app) {
+    return $app->redirect('/mylink');
+});
 
-class DefaultController {
-    function indexAction()
-    {
-        return $response = new Response(
-            'Form here',
-            Response::HTTP_OK,
-            array('content-type' => 'text/html')
-        );
-    }
-}
+return $default;

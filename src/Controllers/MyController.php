@@ -1,15 +1,11 @@
 <?php
-namespace Controllers;
+$my = $app['controllers_factory'];
 
-use Symfony\Component\HttpFoundation\Response;
+$my->get('/', function() use ($app) {
+    return $app['twig']->render('hello.html.twig', array(
+        'name' => 'Mamamia',
+    ));
+    //return 'My controller content';
+});
 
-class MyController {
-    function indexAction()
-    {
-        return $response = new Response(
-            'My controller content',
-            Response::HTTP_OK,
-            array('content-type' => 'text/html')
-        );
-    }
-}
+return $my;
