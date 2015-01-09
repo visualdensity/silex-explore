@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/lkmdd.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -18,7 +19,9 @@
     <![endif]-->
   </head>
   <body>
-    <div id="content">{% block content %}{% endblock content %}</div>
+    {% include 'Layout/navigation.html.twig' %}
+
+    <div class="container" id="content">{% block content %}{% endblock content %}</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
